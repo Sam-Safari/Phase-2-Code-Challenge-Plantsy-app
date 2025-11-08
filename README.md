@@ -1,6 +1,8 @@
-# 🌿 Plantsy Admin Dashboard
+# 🌿 Phase 2 Code Challenge: Plantsy 
 
-This is the **Phase 2 Code Challenge (Plantsy)** app.
+## Demo
+
+This is the **Phase 2 Code Challenge (Plantsy)** app
 
 The goal is to create an admin dashboard for managing plants using **React** and a **JSON Server** backend.
 
@@ -66,14 +68,44 @@ Backend runs on:
 npm test
 
 ## 🧩 Project Structure
-
-| Method | Endpoint      | Description      |
-| ------ | ------------- | ---------------- |
-| GET    | `/plants`     | Fetch all plants |
-| POST   | `/plants`     | Add new plant    |
-| PATCH  | `/plants/:id` | Update price     |
-| DELETE | `/plants/:id` | Remove plant     |
-
+```
+plantsy
+│
+├── .github
+│  
+├── public/
+│   ├── images/
+│   │   ├── aloe.jpg
+│   │   ├── zz-plant.jpg
+│   │   └── monstera.jpg
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+│
+├── src/
+│   ├── __tests__
+│   │   └── App.test.js
+│   ├── components/
+│   │   ├── PlantCard.js
+│   │   ├── PlantForm.js
+│   │   └── SearchBar.js
+│   ├── index.css
+│   ├── index.js
+│   └── App.js
+│
+├── config.json
+├── .gitignore
+├── README.md
+├── babel.config.js
+├── db.json
+├── demo.gif
+├── jest.setup.js
+├── package-lock.json
+└── package.json
+```
 ## 👩🏽‍💻 Author: Sam Safari
 
 ## 📅 Updated: November 2025
