@@ -1,45 +1,49 @@
-// src/components/NewPlantForm.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function NewPlantForm({ onAddPlant }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    scientificName: '',
-    plantType: '',
-  });
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    onAddPlant(formData);
-    setFormData({ name: '', scientificName: '', plantType: '' });
-  };
+    const newPlant = { name, image, price };
+
+    fetch("http://localhost:6001/plants", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPlant),
+    })
+      .then((r) => r.json())
+      .then((data) => onAddPlant(data));
+
+    setName("");
+    setImage("");
+    setPrice("");
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="new-plant-form" onSubmit={handleSubmit}>
       <input
         type="text"
         name="name"
-        placeholder="Plant Name"
-        value={formData.name}
-        onChange={handleChange}
+        placeholder="Plant name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
         type="text"
-        name="scientificName"
-        placeholder="Scientific Name"
-        value={formData.scientificName}
-        onChange={handleChange}
+        name="image"
+        placeholder="Image URL"
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
       />
       <input
-        type="text"
-        name="plantType"
-        placeholder="Plant Type"
-        value={formData.plantType}
-        onChange={handleChange}
+        type="number"
+        name="price"
+        placeholder="Price"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
       />
       <button type="submit">Add Plant</button>
     </form>

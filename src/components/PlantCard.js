@@ -1,12 +1,11 @@
-// src/components/PlantCard.js
-import React from 'react';
+import React from "react";
 
 function PlantCard({ plant }) {
   return (
     <li className="card">
+      <img src={plant.image} alt={plant.name} />
       <h4>{plant.name}</h4>
-      <p>{plant.scientificName}</p>
-      <p>{plant.plantType}</p>
+      <p>{plant.price}</p>
     </li>
   );
 }
