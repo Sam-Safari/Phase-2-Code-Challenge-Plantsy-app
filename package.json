@@ -1,6 +1,6 @@
 {
-  "name": "react-hooks-mock-code-challenge-plantshop",
-  "version": "0.1.0",
+  "name": "phase-2-code-challenge-plantsy-app",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "json-server": "^1.0.0-beta.3",
