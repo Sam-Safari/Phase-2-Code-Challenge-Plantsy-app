@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import App from '../App'; // Fixed import path
+import App from './App';
 import '@testing-library/jest-dom';
 
 describe('4th Deliverable', () => {
