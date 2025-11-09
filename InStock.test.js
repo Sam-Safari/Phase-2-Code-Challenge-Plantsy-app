@@ -1,17 +1,17 @@
 import React from 'react';
 import { render, fireEvent, within } from '@testing-library/react';
-import App from '../../App';
+import App from '../App'; // Changed from '../../App' to '../App'
 import '@testing-library/jest-dom';
 
 describe('3rd Deliverable', () => {
   test('marks a plant as sold out', async () => {
-    global.setFetchResponse(global.basePlants)
+    global.setFetchResponse(global.basePlants);
 
     const { findAllByTestId, findByText } = render(<App />);
 
-    // Get all plant items
+    // Use global.basePlants instead of basePlants
     const plantItems = await findAllByTestId('plant-item');
-    expect(plantItems).toHaveLength(basePlants.length);
+    expect(plantItems).toHaveLength(global.basePlants.length);
 
     // Select the first plant item
     const firstPlantItem = plantItems[0];
@@ -24,4 +24,4 @@ describe('3rd Deliverable', () => {
     const outOfStockButton = await findByText('Out of Stock');
     expect(outOfStockButton).toBeInTheDocument();
   });
-})
+});
