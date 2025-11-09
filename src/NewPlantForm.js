@@ -1,26 +1,46 @@
+// src/components/NewPlantForm.js
+import React, { useState } from 'react';
+
 function NewPlantForm({ onAddPlant }) {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     name: '',
-    image: '',
-    price: ''
+    scientificName: '',
+    plantType: '',
   });
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  function handleSubmit(e) {
-    e.preventDefault(); // Prevent native submit (fixes JSDOM issue)
+  const handleSubmit = (e) => {
+    e.preventDefault();
     onAddPlant(formData);
-    setFormData({ name: '', image: '', price: '' });
-  }
+    setFormData({ name: '', scientificName: '', plantType: '' });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="name" placeholder="Plant name" value={formData.name} onChange={handleChange} />
-      <input name="image" placeholder="Image URL" value={formData.image} onChange={handleChange} />
-      <input name="price" placeholder="Price" value={formData.price} onChange={handleChange} />
+      <input
+        type="text"
+        name="name"
+        placeholder="Plant Name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="scientificName"
+        placeholder="Scientific Name"
+        value={formData.scientificName}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="plantType"
+        placeholder="Plant Type"
+        value={formData.plantType}
+        onChange={handleChange}
+      />
       <button type="submit">Add Plant</button>
     </form>
   );

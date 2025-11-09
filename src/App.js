@@ -1,30 +1,22 @@
-import React from 'react';
+// src/components/App.js
+import React, { useState } from 'react';
 import PlantCard from './PlantCard';
 import NewPlantForm from './NewPlantForm';
 
 function App() {
-  const [plants, setPlants] = React.useState([]);
+  const [plants, setPlants] = useState([]);
 
-  function addPlant(newPlant) {
-    fetch("http://localhost:6001/plants", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newPlant),
-    })
-      .then(res => res.json())
-      .then(savedPlant => setPlants([...plants, savedPlant]));
-  }
-
-  function markSold(id) {
-    setPlants(plants.map(p => p.id === id ? { ...p, soldOut: true } : p));
-  }
+  const handleAddPlant = (newPlant) => {
+    setPlants([...plants, newPlant]);
+  };
 
   return (
-    <div className="app">
-      <NewPlantForm onAddPlant={addPlant} />
-      <ul className="cards">
-        {plants.map(plant => (
-          <PlantCard key={plant.id} plant={plant} onMarkSold={markSold} />
+    <div>
+      <h1>Plantsy</h1>
+      <NewPlantForm onAddPlant={handleAddPlant} />
+      <ul>
+        {plants.map((plant, index) => (
+          <PlantCard key={index} plant={plant} />
         ))}
       </ul>
     </div>
