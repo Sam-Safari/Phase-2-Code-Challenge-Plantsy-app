@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-function PlantCard() {
+function PlantCard({ plant, onMarkSold }) {
   return (
-    <li className="card" data-testid="plant-item">
-      <img src={"https://via.placeholder.com/400"} alt={"plant name"} />
-      <h4>{"plant name"}</h4>
-      <p>Price: {"plant price"}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
+    <li data-testid="plant-item" className="card">
+      <h4>{plant.name}</h4>
+      <img src={plant.image} alt={plant.name} />
+      <p>${plant.price}</p>
+      {plant.soldOut ? (
+        <button disabled>Sold Out</button>
       ) : (
-        <button>Out of Stock</button>
+        <button onClick={() => onMarkSold(plant.id)}>Mark as Sold Out</button>
       )}
     </li>
   );
