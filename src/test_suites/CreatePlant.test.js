@@ -1,25 +1,58 @@
-import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import App from '../components/App';
-import '@testing-library/jest-dom';
+import React from "react";
+import { render, screen, act } from "@testing-library/react";
+import App from "../components/App";
+import "@testing-library/jest-dom";
 
-beforeEach(() => {
-  global.fetch = jest.fn(() =>
-    Promise.resolve({ json: () => Promise.resolve({ id: 1, name: 'foo', image: 'foo_plant_image_url', price: '10' }) })
-  );
-});
+describe("CreatePlant Tests", () => {
+  beforeEach(() => {
+    global.setFetchResponse(global.basePlants);
+  });
 
-test('adds a new plant when the form is submitted', async () => {
-  const { getByPlaceholderText, getByText } = render(<App />);
+  test("displays all plants on startup", async () => {
+    await act(async () => {
+      render(<App />);
+    });
 
-  fireEvent.change(getByPlaceholderText('Plant name'), { target: { value: 'foo' } });
-  fireEvent.change(getByPlaceholderText('Image URL'), { target: { value: 'foo_plant_image_url' } });
-  fireEvent.change(getByPlaceholderText('Price'), { target: { value: '10' } });
-  fireEvent.click(getByText('Add Plant'));
+    const plantItems = await screen.findAllByTestId("plant-item");
+    expect(plantItems).toHaveLength(global.basePlants.length);
 
-  expect(global.fetch).toHaveBeenCalledWith('http://localhost:6001/plants', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' }, // ensure correct capitalization
-    body: JSON.stringify({ name: 'foo', image: 'foo_plant_image_url', price: '10' }),
+    const plantNames = plantItems.map((item) =>
+      item.querySelector("h4").textContent
+    );
+    const basePlantNames = global.basePlants.map((plant) => plant.name);
+    expect(plantNames).toEqual(basePlantNames);
+
+    const plantImages = plantItems.map((item) =>
+      item.querySelector("img").src.split("/").pop()
+    );
+    const basePlantImages = global.basePlants.map((plant) =>
+      plant.image.split("/").pop()
+    );
+    expect(plantImages).toEqual(basePlantImages);
+
+    const plantPrices = plantItems.map(
+      (item) => item.querySelector("p").textContent
+    );
+    const basePlantPrices = global.basePlants.map(
+      (plant) => "Price: " + plant.price.toString()
+    );
+    expect(plantPrices).toEqual(basePlantPrices);
+  });
+
+  test("plants aren't hardcoded", async () => {
+    global.setFetchResponse(global.alternatePlants);
+
+    await act(async () => {
+      render(<App />);
+    });
+
+    const plantItems = await screen.findAllByTestId("plant-item");
+    expect(plantItems).toHaveLength(global.alternatePlants.length);
+
+    const plantNames = plantItems.map((item) =>
+      item.querySelector("h4").textContent
+    );
+    const altPlantNames = global.alternatePlants.map((plant) => plant.name);
+    expect(plantNames).toEqual(altPlantNames);
   });
 });
