@@ -15,11 +15,13 @@ function NewPlantForm({ onAddPlant }) {
       body: JSON.stringify(newPlant),
     })
       .then((r) => r.json())
-      .then((data) => onAddPlant(data));
-
-    setName("");
-    setImage("");
-    setPrice("");
+      .then((data) => {
+        onAddPlant(data);
+        setName("");
+        setImage("");
+        setPrice("");
+      })
+      .catch((error) => console.error("Error adding plant:", error));
   }
 
   return (
