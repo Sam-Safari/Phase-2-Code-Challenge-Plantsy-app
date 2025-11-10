@@ -5,15 +5,17 @@
   "dependencies": {
     "json-server": "^1.0.0-beta.3",
     "node-fetch": "^2.7.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "json-server --watch db.json -p 6001",
-    "test": "jest --bail"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "server": "json-server --watch db.json --port 6001",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
