@@ -6,7 +6,7 @@ function App() {
   const [plants, setPlants] = useState([]); // initialize as empty array
 
   useEffect(() => {
-    fetch("http://localhost:3000/plants")
+    fetch("http://localhost:6001/plants")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
