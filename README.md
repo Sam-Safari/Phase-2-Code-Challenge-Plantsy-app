@@ -1,4 +1,4 @@
-# 🌿 Phase 2 Code Challenge: Plantsy 
+# 🌿 Phase 2 Code Challenge: Plantsy
 
 ## Demo
 
@@ -11,25 +11,26 @@ The goal is to create an admin dashboard for managing plants using **React** and
 ## 🚀 Setup Instructions
 
 1. Install dependencies:
-   ```bash
 
-   npm install
+```bash
+npm install
+```
 
-Start the backend (port 6001):
+1. Start the backend (port 6001):
 
+```bash
 npm run server
+```
 
-In another terminal, start the frontend:
+1. In another terminal, start the frontend:
 
+```bash
 npm start
+```
 
-Visit:
+Visit: [http://localhost:3000](http://localhost:3000)
 
-[http://localhost:3000]
-
-Backend runs on:
-
-(http://localhost:6001/plants)
+Backend runs on: [http://localhost:6001/plants](http://localhost:6001/plants)
 
 ## 🌱 Core Features
 
@@ -52,7 +53,6 @@ Backend runs on:
 | PATCH  | `/plants/:id` | Update price     |
 | DELETE | `/plants/:id` | Remove plant     |
 
-
 ## 🧰 Technologies Used
 
 - React 18
@@ -65,14 +65,17 @@ Backend runs on:
 
 - 🧪 Run Tests
 
+```bash
 npm test
+```
 
 ## 🧩 Project Structure
-```
+
+```text
 plantsy
 │
 ├── .github
-│  
+│
 ├── public/
 │   ├── images/
 │   │   ├── aloe.jpg
@@ -106,6 +109,7 @@ plantsy
 ├── package-lock.json
 └── package.json
 ```
+
 ## 👩🏽‍💻 Author: Sam Safari
 
 ## 📅 Updated: November 2025
