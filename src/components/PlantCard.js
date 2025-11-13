@@ -1,11 +1,10 @@
-import React from "react";
-
 function PlantCard({ plant }) {
   return (
-    <li className="card">
-      <img src={plant.image} alt={plant.name} />
+    <li className="card" data-testid="plant-item">
+      <img alt={plant.name} src={plant.image} />
       <h4>{plant.name}</h4>
-      <p>{plant.price}</p>
+      <p>Price: {plant.price}</p>
+      <button>{plant.inStock ? "In Stock" : "Out of Stock"}</button>
     </li>
   );
 }

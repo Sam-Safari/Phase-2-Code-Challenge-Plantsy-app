@@ -10,12 +10,12 @@
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "server": "json-server --watch db.json --port 6001",
-  "eject": "react-scripts eject"
-},
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "server": "json-server --watch db.json --port 6001",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -40,14 +40,5 @@
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.4",
     "jest": "^27.5.1"
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/jest.setup.js"
-    ],
-    "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": [
-      "/test_suites"
-    ]
   }
 }

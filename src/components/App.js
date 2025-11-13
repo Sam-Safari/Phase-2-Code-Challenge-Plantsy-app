@@ -3,14 +3,15 @@ import PlantCard from "./PlantCard";
 import NewPlantForm from "./NewPlantForm";
 
 function App() {
-  const [plants, setPlants] = useState([]); // initialize as empty array
+  const [plants, setPlants] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:6001/plants")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          setPlants(data); // only set if data is array
+          setPlants(data);
         } else {
           console.error("Fetched data is not an array:", data);
           setPlants([]);
@@ -22,16 +23,27 @@ function App() {
       });
   }, []);
 
+  const filteredPlants = plants.filter((plant) =>
+    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="app">
       <NewPlantForm setPlants={setPlants} />
-      <ul>
-        {plants.map((plant) => (
-          <PlantCard key={plant.id} plant={plant} />
-        ))}
-      </ul>
-    </div>
 
+      <input
+        type="text"
+        placeholder="Type a name to search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <ul>
+  {plants.map((plant) => (
+    <PlantCard key={plant.id} plant={plant} />
+  ))}
+</ul>
+    </div>
   );
 }
 

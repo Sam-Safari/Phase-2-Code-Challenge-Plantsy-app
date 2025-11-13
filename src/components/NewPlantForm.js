@@ -16,7 +16,7 @@ function NewPlantForm({ onAddPlant }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        onAddPlant(data);
+        onAddPlant(data); // Add new plant to the parent state
         setName("");
         setImage("");
         setPrice("");
@@ -47,7 +47,9 @@ function NewPlantForm({ onAddPlant }) {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <button type="submit">Add Plant</button>
+      <button type="submit" className="primary">
+        Add Plant
+      </button>
     </form>
   );
 }
