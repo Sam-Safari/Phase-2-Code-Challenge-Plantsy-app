@@ -27,9 +27,13 @@ function App() {
     plant.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleAddPlant = (newPlant) => {
+    setPlants((prevPlants) => [...prevPlants, newPlant]);
+  };
+
   return (
     <div className="app">
-      <NewPlantForm setPlants={setPlants} />
+      <NewPlantForm onAddPlant={handleAddPlant} />
 
       <input
         type="text"
@@ -39,7 +43,7 @@ function App() {
       />
 
       <ul>
-  {plants.map((plant) => (
+  {filteredPlants.map((plant) => (
     <PlantCard key={plant.id} plant={plant} />
   ))}
 </ul>

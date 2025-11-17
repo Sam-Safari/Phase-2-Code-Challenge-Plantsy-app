@@ -16,7 +16,9 @@ function NewPlantForm({ onAddPlant }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        onAddPlant(data); // Add new plant to the parent state
+        if (onAddPlant) {
+          onAddPlant(data); // Add new plant to the parent state
+        }
         setName("");
         setImage("");
         setPrice("");
