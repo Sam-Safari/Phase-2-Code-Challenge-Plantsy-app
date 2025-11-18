@@ -4,6 +4,6 @@ module.exports = {
   ],
   testEnvironment: "jsdom",
   testPathIgnorePatterns: [
-    "/test_suites"
+    "/node_modules/"
   ]
 };
