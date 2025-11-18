@@ -4,7 +4,10 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-global.fetch = require('node-fetch');
+// Polyfill fetch for Node.js environment
+if (typeof global !== 'undefined' && !global.fetch) {
+  global.fetch = require('node-fetch');
+}
 
 global.basePlants = [
     {
