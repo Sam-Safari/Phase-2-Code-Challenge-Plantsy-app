@@ -28,9 +28,9 @@ npm run server
 npm start
 ```
 
-Visit: [http://localhost:3000](http://localhost:3000)
+Visit: [http://localhost:3003]
 
-Backend runs on: [http://localhost:6001/plants](http://localhost:6001/plants)
+Backend runs on: [http://localhost:6001/plants]
 
 ## 🌱 Core Features
 
